@@ -1,0 +1,190 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  font-family: 'Bebas Neue', cursive;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root{
+
+  width: 500px;
+  height: 30%;
+  border-radius: 12px;
+}
+
+.dim{
+  opacity: 0.42;
+  transition: all 0.3s ease-in;
+}
+
+button{
+  border: none;
+  outline: none;
+  background-color: white;
+}
+
+
+.doro{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+  justify-content: center;
+  align-items: center;
+  padding: 17px;
+  transition: opacity 0.3s ease-out;
+}
+
+
+.breakFocusbtns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap:12px;
+}
+
+.breakFocusbtns button{
+  position: relative;
+  display: flex;
+  gap:4%;
+  
+  padding: 12px;
+  justify-content: space-evenly;
+  font-size: 17px;
+  border-radius: 8px;
+  border:2px solid  #0a0a24;
+}
+
+.breakFocusbtns button p{
+  font-size: 1.9rem;
+}
+
+.breakFocusbtns button::after{
+  position: absolute;
+  content: '';
+  top:5px;
+  right: -5px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a24;
+  border-radius: 7px;
+}
+
+.breakFocusbtns input{
+  
+  width: 30%;
+  font-size: 1.9rem;
+  text-align: center;
+  border: 2px solid #0a0a24;
+  border-radius: 8px;
+}
+
+.timer{
+  font-size: 4rem;
+}
+
+.startBtns{
+    display: flex;
+    gap:12px;
+    width: 80%;
+}
+
+.startBtns button{
+  position: relative;
+  padding: 7px;
+  border-radius: 7px;
+  width: 45%;
+  transition: all 0.26s ease-in-out;
+  font-size: 1.4rem;
+  border:2px solid  #0a0a24;
+}
+
+.startBtns button::after{
+  position: absolute;
+  content: '';
+  top:5px;
+  right: -5px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a24;
+  border-radius: 7px;
+}
+
+.focusedOn{
+  color: white !important;
+  background-color: #0a0a24 !important;
+  position: relative !important;
+  transition: all 0.26s ease-in-out;
+}
+
+.focusedOn::after{
+  position: absolute !important;
+  content: '';
+  top:3px !important;
+  right: -8px !important;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  
+  border: 2px solid #0a0a24;
+  background-color: #ffffff !important;
+  border-radius: 7px;
+}
+
+.cancelSound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:12px;
+  font-size: 24px;
+}
+
+.cancelSound button{
+  width: 40px;
+  color: #ffffff;
+  font-size: 28px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #0a0a24;
+}
+
+.blob {
+	background: black;
+	border-radius: 50%;
+	margin: 10px;
+	height: 20px;
+	width: 20px;
+
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}

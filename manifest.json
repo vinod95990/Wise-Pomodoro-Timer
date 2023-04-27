@@ -1,0 +1,30 @@
+{
+  "name":"Wise| Pomodoro Timer",
+  "description": "A Pomodoro timer which is customizable, opens up in new window, notifies after timer expires and gets the job done, creative UI and ofcourse build with ❤",
+  "version":"1.0",
+  "background": {
+      "service_worker": "background.js"
+    },
+  "manifest_version":3,
+  "action":{
+      "default_title":"Slice Up",
+      "default_icon":{
+          "16": "logoClock.png",
+          "32": "logoClock.png",
+          "48": "logoClock.png",
+          "128": "logoClock.png"
+        }
+      },
+
+  "icons": {
+      "16": "logoClock.png",
+      "32": "logoClock.png",
+      "48": "logoClock.png",
+      "128": "logoClock.png"
+    },
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "tabs"
+    ]
+}

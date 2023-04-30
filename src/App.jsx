@@ -4,7 +4,7 @@ import './App.css'
 
 function App() {
   const audio=new Audio(sound);
-
+  
   const audioTag=useRef();
  
   const [focusTime, setFocusTime] = useState(1500);
@@ -15,7 +15,7 @@ function App() {
   
   // it holds the value which will decrease with interval and update on the DOM
   // if val == 0, then set it to focusTime or restTime depending on the current state
-  const [val,cval]=useState(1500);
+  let [val,cval]=useState(1500);
 
   // state for seconds if time 300 sec then this will run 59 to 0 then to 59...
   // time is expired using setTimeout, so this state is more like to just display seconds
@@ -24,7 +24,7 @@ function App() {
   const [current,changeCurrent]=useState(true);
   
   // state to hold the 'setInterval' event which decreases value of 'val' every 1s
-  // used to clearInterval because now we have assigned it a variable
+  // used to clearInterval because now we have assigned it a state
   const [timer,ctimer]=useState(-1);
 
   //holds timout event which is triggered to reset values and play audio and we are storing
@@ -35,14 +35,13 @@ function App() {
 // we updae timer state with that event as it helps us to clear that interval if reset btn is clicked
 // more like moving this interval event on top of the scope and we also clear this interval here
 // the timer is used only to disable the start btn on the page once an event is started and is used when user clicks reset btn on the page
-  
+
+
   function startTimer(){
     //holds event
-    const tmpx=setInterval(()=>{
-      
-      cval((x)=>{
-        return x-1;
-      })
+     let tmpx=setInterval(()=>{
+      //decreasing the val state that holds the seonds that is decreasing
+      cval(x=> x-1);
 
       csec((x)=>{
         if(x==0)
@@ -57,11 +56,14 @@ function App() {
       
      
       ctimeout(setTimeout(()=>{
+        console.log('Timeout val',val);
         // if sound is not already playing -> play song and stop playing it after 36 secs
           if(soundPlay==false){
             changeSoundPlay(true);
             audioTag.current.volume=0.40;
-            audioTag.current.play();
+            audioTag.current.play().then(x=>console.log(`song plays`)).catch((x)=>console.log('error playing song'));
+
+            // audio will stop playing afeter 36 secs
             setTimeout(()=>{
               audio.currentTime=0;
               audio.pause();
@@ -83,7 +85,7 @@ function App() {
         
         
 
-      },1000*(val)));
+      },1000*(current==1?focusTime:restTime)));
 
   }
 // 'val' reset to focusTime or restTime depending on the 'current' which indicate the time we ran i.e is it focus one or rest
@@ -93,6 +95,8 @@ function App() {
     setTimeout(()=>{
       clearInterval(timer);
       clearTimeout(timeout);
+      ctimer(-1);
+ctimeout(-1);
       csec(0);
       cval(()=>{
         if(current){
@@ -108,6 +112,8 @@ function App() {
     ctimer(-1);
   }
 
+  console.log('out-val',val);
+  
   return (
     <div className={current==1 && timer!=-1? 'doro dim':'doro'}>
       <audio src={sound} ref={audioTag}></audio>

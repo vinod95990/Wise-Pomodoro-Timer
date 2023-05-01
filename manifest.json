@@ -3,11 +3,11 @@
   "description": "A Pomodoro timer which is customizable, opens up in new window, notifies after timer expires and gets the job done, creative UI and ofcourse build with ❤",
   "version":"1.0",
   "background": {
-      "service_worker": "background.js"
+      "service_worker": "worker.js"
     },
   "manifest_version":3,
   "action":{
-      "default_title":"Slice Up",
+      "default_title":"Wise",
       "default_icon":{
           "16": "logoClock.png",
           "32": "logoClock.png",

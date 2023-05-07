@@ -12,11 +12,16 @@ body{
   justify-content: center;
   align-items: center;
 }
+::placeholder {
+  font-size: 20px;
+  color: aqua;
+  opacity: 0.4;
+} 
 
 #root{
 
-  width: 500px;
-  height: 30%;
+  width: 700px;
+  height: 40%;
   border-radius: 12px;
 }
 
@@ -32,12 +37,13 @@ button{
 }
 
 
+
 .doro{
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap:16px;
+  gap:7px;
   justify-content: center;
   align-items: center;
   padding: 17px;
@@ -45,12 +51,47 @@ button{
 }
 
 
+.task{
+  width: 80%;
+  margin: 10px auto;
+}
+
+.task input{
+  text-align: center;
+  width: 100%;
+  border: 3px solid #0a0a24;
+  background-color: #0a0a24;
+  border-radius: 7px;
+  padding: 2px;
+  color: aqua;
+  letter-spacing: 1px;
+  font-size: 24px;
+  
+}
+
+
+
 .breakFocusbtns{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  gap:12px;
+  gap:28px;
+  transform: scale(0.8);
+  position: relative;
 }
+
+#owlGif{
+  position: absolute;
+   width: 150px;
+  height: auto;
+opacity: 0.45;
+  z-index: -4;
+  top:-20px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+ 
+}
+
 
 .breakFocusbtns button{
   position: relative;
@@ -82,7 +123,7 @@ button{
 
 .breakFocusbtns input{
   
-  width: 30%;
+  width: 36%;
   font-size: 1.9rem;
   text-align: center;
   border: 2px solid #0a0a24;
@@ -91,12 +132,16 @@ button{
 
 .timer{
   font-size: 4rem;
+  margin-top: 20px;
+  color: #010111;
 }
 
 .startBtns{
     display: flex;
     gap:12px;
     width: 80%;
+    justify-content: center;
+    align-items: center;
 }
 
 .startBtns button{

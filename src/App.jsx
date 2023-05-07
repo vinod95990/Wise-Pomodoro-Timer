@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import owlGif from './owlGif.gif'
 import sound from './assets/JOD.mp3'
-// import arduino from './arduino'
+
+
 import './App.css'
 
 function App() {
@@ -10,6 +12,8 @@ function App() {
  
   const [focusTime, setFocusTime] = useState(1500);
   const [restTime, setRestTime] = useState(300);
+
+  const [task,updateTask]=useState(localStorage.getItem("task"));
   
   // true if the audio is playing and turned off to false when audio stops, to avoid user spam start btn with timer 0 val else th sound will start parallely
   const [soundPlay,changeSoundPlay]=useState(false);
@@ -25,6 +29,8 @@ function App() {
  
   const [webWorker,changeWebWorker]=useState(-1);
   const [timeout,ctimeout]=useState(-1);
+
+
 
 
   function startTimer(){
@@ -88,6 +94,7 @@ function App() {
   
   return (
     <div className={current==1 && webWorker!=-1? 'doro dim':'doro'}>
+      
       <audio src={sound} ref={audioTag}></audio>
       <div className='breakFocusbtns'>
         {/* onClick val state set to focus time and current state changes indicating we are on focus */}
@@ -128,10 +135,19 @@ function App() {
           <p>Break</p>
           <input type='number' value={Math.floor(restTime/60)} onChange={(e)=>{if(e.target.value <5){return;}setRestTime((e.target.value)*60); if(current==0){cval(((e.target.value)*60))}}}></input>
         </button>
+
+        <img id='owlGif' src={owlGif} alt='Wise Owl'></img>
       </div>
       <div className='timer'>
         <h3 id='kal'>{Math.floor(val/60)} : 00</h3>
        
+      </div>
+
+      <div className='task'>
+              <input type="text"  value={task} placeholder={current ? `Write task | Focus on one task`:"Recharge and reset. Be back soon!"} onChange={(e)=>{
+                updateTask(e.target.value);
+                localStorage.setItem("task",e.target.value);
+              }}/>
       </div>
 
       <div className='startBtns'>
